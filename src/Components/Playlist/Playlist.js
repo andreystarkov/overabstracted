@@ -25,11 +25,7 @@ export default class Playlist extends Component {
         <span className='track-title flex-auto'>{track.user.username} - {track.title}</span>
         <span className='track-time right'>
           {isActive && currentTime > 0
-            ? <Timer
-              className='track-time'
-              duration={track ? track.duration / 1000 : 0}
-              currentTime={currentTime}
-              {...this.props} />
+            ? Timer.prettyTime((track.duration / 1000) - currentTime)
             : Timer.prettyTime(track.duration / 1000)}
         </span>
       </div>
