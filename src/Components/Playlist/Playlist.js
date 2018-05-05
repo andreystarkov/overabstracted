@@ -13,7 +13,7 @@ export default class Playlist extends Component {
   
     const isActive = (soundCloudAudio._playlistIndex === i && soundCloudAudio.playing)
   
-    const classNames = ClassNames('playlist-item p2 border-box border-bottom', {
+    const classNames = ClassNames('playlist-item p2 border-box', {
       'is-active': isActive
     })
   
@@ -48,7 +48,9 @@ export default class Playlist extends Component {
     const { playlist } = this.props
 
     if (!playlist) {
-      return <div className='p2 center'>Loading...</div>;
+      return <div className='mt4 p4 center'>
+        <span style={{ fontWeight: 300 }} className='h3'>Loading...</span>
+      </div>
     }
 
     const list = this.filterList()

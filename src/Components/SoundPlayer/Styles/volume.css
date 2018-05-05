@@ -52,7 +52,7 @@
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: #FC561E;
+  background: var(--pale-coral);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
@@ -62,7 +62,7 @@
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: #FC561E;
+  background: var(--pale-coral);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
@@ -72,7 +72,7 @@
   height: 1em;
   width: 1em;
   border-radius: 1em;
-  background: #FC561E;
+  background: var(--pale-coral);
   cursor: pointer;
   -webkit-appearance: none;
   margin-top: -0.4em;
@@ -80,5 +80,5 @@
 
 /* progress fill */
 .sb-soundplayer-volume-range::-ms-fill-lower {
-  background: #FC561E;
+  background: var(--pale-coral);
 }

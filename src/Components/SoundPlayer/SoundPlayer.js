@@ -32,24 +32,24 @@ class PlaylistSoundPlayer extends Component {
   }
 
   nextIndex = () => {
-    const { playlist } = this.props
+    const { playlist, soundCloudAudio } = this.props
     let { activeIndex } = this.state
 
     if (activeIndex >= playlist.tracks.length - 1) {
-      return
-    }
-    if (activeIndex || activeIndex === 0) {
+      this.setState({ activeIndex: 0 })
+      soundCloudAudio.play({ playlistIndex: 0 })
+    } else if (activeIndex || activeIndex === 0) {
       this.setState({ activeIndex: ++activeIndex })
     }
   }
 
   prevIndex = () => {
     let { activeIndex } = this.state
-
+    const { soundCloudAudio, playlist } = this.props
     if (activeIndex <= 0) {
-      return
-    }
-    if (activeIndex || activeIndex === 0) {
+      this.setState({ activeIndex: playlist.tracks.length - 1 })
+      soundCloudAudio.play({ playlistIndex: playlist.tracks.length - 1 })
+    } else if (activeIndex || activeIndex === 0) {
       this.setState({ activeIndex: --activeIndex })
     }
   }
@@ -114,11 +114,30 @@ class PlaylistSoundPlayer extends Component {
     )
   }
 
+  renderHeader = () => {
+    const { playlist } = this.props
+    return (
+      <div className='flex items-center' style={{ height: '7rem' }} >
+        {playlist && playlist.artwork_url
+          ? <img
+            src={playlist.artwork_url}
+            style={{ maxWidth: '6rem', marginLeft: '2.8rem' }}
+            className='circle left mr3'/> : null}
+        <h2
+          style={{ fontWeight: 300 }}
+          className='h2 border-bottom'>
+          {playlist && playlist.title ? playlist.title : ''}
+        </h2>
+      </div>
+    )
+  }
+
   render () {
-    const { searchString } = this.state
+    const { searchString, activeIndex } = this.state
 
     return (
       <div className='soundplayer'>
+        {this.renderHeader()}
         <div className='controls-container flex flex-wrap'>
           <div className='col-2'>
             {this.renderPlaybackControls()}
@@ -140,10 +159,7 @@ class PlaylistSoundPlayer extends Component {
   }
 }
 
-// <div className='flex flex-center'>
-// <h2 className='h4 flex-auto nowrap m0 semibold'>{playlist ? playlist.user.username : ''}</h2>
-// <Timer className='h6 mr1 regular' duration={duration || 0} currentTime={currentTime} {...this.props} />
-// </div>
+
 PlaylistSoundPlayer.propTypes = {
   resolveUrl: PropTypes.string.isRequired,
   clientId: PropTypes.string.isRequired

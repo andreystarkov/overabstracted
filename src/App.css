@@ -16,12 +16,25 @@ body * {
   font-family: 'Lato', sans-serif;
 }
 
-
 :root {
   --font-family: 'Lato', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --container-width: 820px;
   --yellow: rgba(255, 220, 0, 0.45);
-  --orange: #FC561E;
+  --light-green: rgb(101, 180, 91);
+  --coral: #F65454;
+  --pale-coral: #F97272;
+  --pale-yellow: #FADC6D;
+  --juicy-yellow: #F6EC66;
+  --pale-blue: rgb(80, 127, 168);
+  --sunset: #C06C84;
+  --pale-orange: #F8B195;
+  --dark-purple: rgb(123, 108, 133);
+  --pale-purple: #C06C84;
+  --crab: #F67280;
+  --pale-crab: #F8B195;
+  --bg-light: #f0ebe9;
+  --bg-medium: #dfdbd9;
+  --bg-very-light: #ececec;
   --button-line-height: 1;
   --sb-progress-height: 8px;
   --button-big-padding-x: 1.25rem;
