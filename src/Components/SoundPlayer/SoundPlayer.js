@@ -116,6 +116,7 @@ class PlaylistSoundPlayer extends Component {
 
   render () {
     const { searchString } = this.state
+
     return (
       <div className='soundplayer'>
         <div className='controls-container flex flex-wrap'>

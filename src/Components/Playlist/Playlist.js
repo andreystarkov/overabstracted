@@ -9,17 +9,29 @@ import './Playlist.css'
 export default class Playlist extends Component {
   renderItems = (track, i) => {
     const { onChoose, soundCloudAudio } = this.props
+    const { currentTime } = soundCloudAudio.audio
+  
     const isActive = (soundCloudAudio._playlistIndex === i && soundCloudAudio.playing)
+  
     const classNames = ClassNames('playlist-item p2 border-box border-bottom', {
       'is-active': isActive
     })
+  
     return (
       <div
         key={track.id}
         className={classNames}
         onClick={() => onChoose(i, isActive)}>
         <span className='track-title flex-auto'>{track.user.username} - {track.title}</span>
-        <span className='track-time right'>{Timer.prettyTime(track.duration / 1000)}</span>
+        <span className='track-time right'>
+          {isActive && currentTime > 0
+            ? <Timer
+              className='track-time'
+              duration={track ? track.duration / 1000 : 0}
+              currentTime={currentTime}
+              {...this.props} />
+            : Timer.prettyTime(track.duration / 1000)}
+        </span>
       </div>
     )
   }
