@@ -134,7 +134,7 @@ class PlaylistSoundPlayer extends Component {
 
   render () {
     const { searchString, activeIndex } = this.state
-
+    console.log(this.props)
     return (
       <div className='soundplayer'>
         {this.renderHeader()}

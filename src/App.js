@@ -10,6 +10,11 @@ const random = (min, max) => {
 
 const sources = [
   'https://soundcloud.com/blumarten/sets/podcasts',
+  'https://soundcloud.com/soul-trader-records/sets/podcasts',
+  'https://soundcloud.com/fokuzrecordings/sets/fokuz-recordings-podcast',
+  'https://soundcloud.com/ninjaninja/sets/podcasts',
+  'https://soundcloud.com/ninjaninja/sets/guest-mixes',
+  'https://soundcloud.com/sunandbass/sets/sun-and-bass-podcast',
   'https://soundcloud.com/lokomotiv-music/sets/podcast-series',
   'https://soundcloud.com/afterhours-uk-au/sets/afterhours-podcast',
   'https://soundcloud.com/atmoteka/sets/atmoteka-season-4',
@@ -25,6 +30,8 @@ const soundCloudSettings = {
   clientId: '310e867035eacd04d104cedd5705b31e',
   resolveUrl: sources[random(0, sources.length - 1)]
 }
+
+console.log({ soundCloudSettings })
 
 class App extends Component {
   render () {
