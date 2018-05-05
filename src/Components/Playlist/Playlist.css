@@ -1,0 +1,26 @@
+.playlist {
+  margin-top: 1rem;
+}
+
+.playlist .track-item {
+  background-color: transparent;
+}
+
+.playlist .track-title {
+  font-weight: 300;
+  font-size: 1rem;
+}
+
+.playlist .track-time {
+  font-weight: 200;
+  font-size: 1rem;
+}
+
+.playlist .playlist-item:hover {
+  background-color: 'rgba(0,0,0,0.1)';
+}
+
+.playlist-item.is-active .track-title {
+  color: #FC561E;
+  font-weight: 500;
+}

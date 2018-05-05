@@ -1,0 +1,48 @@
+
+@import './Styles/buttons.css';
+@import './Styles/cover.css';
+@import './Styles/icons.css';
+@import './Styles/progress.css';
+@import './Styles/volume.css';
+
+.b2 {
+  border-width: 2px;
+}
+
+.muted {
+  opacity: .3;
+}
+
+.btn-small.btn-square {
+  padding: .25rem .3rem;
+}
+
+.custom-track-bg::-webkit-slider-runnable-track {
+  background-color: rgba(0, 0, 0, .25);
+}
+.custom-track-bg::-moz-range-track {
+  background-color: rgba(0, 0, 0, .25);
+}
+.custom-track-bg::-ms-track {
+  background-color: rgba(0, 0, 0, .25);
+}
+.custom-track-bg::-moz-range-thumb {
+  background: #fff;
+}
+.custom-track-bg::-webkit-slider-thumb {
+  background: #fff;
+}
+.custom-track-bg::-ms-thumb {
+  background: #fff;
+}
+
+.controls {
+  height: 5rem;
+  justify-content: center;
+}
+
+body .sb-soundplayer-volume div {
+  overflow: visible;
+  width: auto;
+  height: 1.8rem;
+}
