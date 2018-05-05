@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSoundCloudAudio } from 'react-soundplayer/addons'
-import { PlayButton, PrevButton, NextButton, Progress, Timer, VolumeControl } from 'react-soundplayer/components'
+import { PlayButton, PrevButton, NextButton, Progress, VolumeControl } from 'react-soundplayer/components'
 
 import { Playlist } from 'Components'
 
@@ -120,21 +120,22 @@ class PlaylistSoundPlayer extends Component {
       <div className='flex items-center' style={{ height: '7rem' }} >
         {playlist && playlist.artwork_url
           ? <img
+            alt={playlist && playlist.title}
             src={playlist.artwork_url}
             style={{ maxWidth: '6rem', marginLeft: '2.8rem' }}
             className='circle left mr3'/> : null}
-        <h2
-          style={{ fontWeight: 300 }}
-          className='h2 border-bottom'>
-          {playlist && playlist.title ? playlist.title : ''}
-        </h2>
+          <h2
+            style={{ fontWeight: 300 }}
+            className='h2 border-bottom'>
+            {playlist && playlist.title}
+          </h2>
       </div>
     )
   }
 
   render () {
-    const { searchString, activeIndex } = this.state
-    console.log(this.props)
+    const { searchString } = this.state
+
     return (
       <div className='soundplayer'>
         {this.renderHeader()}

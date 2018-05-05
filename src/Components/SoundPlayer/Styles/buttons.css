@@ -13,7 +13,7 @@
   border: 0;
   outline: none !important;
   border: 0 !important;
-  transition: 0.55s ease-in-out; 
+  transition: 0.35s cubic-bezier(0.455, 0.03, 0.515, 0.955); 
   cursor: pointer;
   -webkit-box-sizing: border-box;
           box-sizing: border-box;
@@ -22,11 +22,12 @@
 .sb-soundplayer-btn:hover {
   /* -webkit-transform: scale(1.2);
           transform: scale(1.2); */
-  opacity: 0.6;
+  color: var(--coral);
+  opacity: 1;
 }
 
 .sb-soundplayer-btn:focus {
-  opacity: 0.9;
+
 }
 
 .sb-soundplayer-btn:active {
