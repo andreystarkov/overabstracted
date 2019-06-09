@@ -1,9 +1,8 @@
-# React Soundcloud Playground
+# Soundcloud Player
 
-Someday i was bored so this app exists.
 It takes a link and loads playlist data via Soundcloud API.
 
-In the ./src/Config/Soundcloud.js i list links with awesome podcasts. 
+List your favourite playlists at ./src/Config/Soundcloud.js  
 
 ```js
   const sources = [
@@ -17,9 +16,7 @@ In the ./src/Config/Soundcloud.js i list links with awesome podcasts.
 
 It loads random playlist on every page load. And you can play that. That's it!
 
-### It looks like:
-
-![Now it looks like](shot.png)
+Here the [demo](https://build.andreystarkov.now.sh/), that loads last liked tracks by me.
 
 ### Usage
 
