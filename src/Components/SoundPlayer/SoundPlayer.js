@@ -2,10 +2,31 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import { withSoundCloudAudio } from 'react-soundplayer/addons'
 import { PlayButton, PrevButton, NextButton, Progress, VolumeControl } from 'react-soundplayer/components'
+import styled from 'styled-components'
 
 import { Playlist } from 'Components'
 
 import './SoundPlayer.css'
+
+export const PlaybackControlsContainer = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 222;
+  right: 0;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  background-color: #fff;
+  height: 100px;
+`
+
+export const ProgressContainer = styled.div`
+  position: relative;
+  width: 60%;
+`
+
 
 const controlButtonClassNames = 'flex-none h3 button button-narrow button-transparent button-grow rounded'
 
@@ -80,13 +101,13 @@ class PlaylistSoundPlayer extends Component {
   renderProgress = () => {
     const { currentTime, duration } = this.props
     return (
-      <div className='controls flex items-center'>
+      <ProgressContainer>
         <Progress
           className='mt1 mb1 rounded'
           innerClassName='rounded-left'
           value={(currentTime / duration) * 100 || 0}
           {...this.props} />
-      </div>
+      </ProgressContainer>
     )
   }
 
@@ -109,13 +130,14 @@ class PlaylistSoundPlayer extends Component {
           style={{ width: '100%' }}
           placeholder='Search'
           onChange={this.handleSearchChange}
-          className='input border-box border p2 block fit' />
+          className='input border-box border p2 block fit mb3' />
       </div>
     )
   }
 
   renderHeader = () => {
     const { playlist } = this.props
+    console.log({ ...this.props })
     return (
       <div className='flex items-center' style={{ height: '7rem' }} >
         {playlist && playlist.artwork_url
@@ -135,21 +157,14 @@ class PlaylistSoundPlayer extends Component {
 
   render () {
     const { searchString } = this.state
-
     return (
       <div className='soundplayer'>
         {this.renderHeader()}
-        <div className='controls-container flex flex-wrap'>
-          <div className='col-2'>
-            {this.renderPlaybackControls()}
-          </div>
-          <div className='col-8'>
-            {this.renderProgress()}
-          </div>
-          <div className='col-2'>
-            {this.renderVolumeControl()}
-          </div>
-        </div>
+        <PlaybackControlsContainer>
+          {this.renderPlaybackControls()}
+          {this.renderProgress()}
+          {this.renderVolumeControl()}
+        </PlaybackControlsContainer>
         {this.renderSearchInput()}
         <Playlist
           searchString={searchString}

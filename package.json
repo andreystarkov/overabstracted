@@ -4,19 +4,38 @@
   "private": true,
   "dependencies": {
     "babel-polyfill": "^6.26.0",
-    "basscss": "^8.0.4",
-    "bootstrap": "^4.1.1",
-    "classnames": "^2.2.5",
-    "react": "^16.3.2",
-    "react-dom": "^16.3.2",
-    "react-scripts": "1.1.4",
+    "basscss": "^8.1.0",
+    "bootstrap": "^4.3.1",
+    "classnames": "^2.2.6",
+    "grommet": "^2.7.1",
+    "grommet-icons": "^4.2.0",
+    "polished": "^3.4.0",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-epic-spinners": "^0.3.0",
+    "react-scripts": "3.0.1",
     "react-soundplayer": "^1.0.4",
-    "reactstrap": "^6.0.1"
+    "reactstrap": "^8.0.0",
+    "styled-components": "^4.3.1",
+    "styled-icons": "^8.1.0",
+    "styled-media-query": "^2.1.1"
   },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   }
 }
