@@ -1,8 +1,12 @@
-# Soundcloud Player
+# Overabstracted
 
-It takes a link and loads playlist data via Soundcloud API.
+I liked over 800 [true tech podcasts](https://soundcloud.com/starcowsky/likes) at soundcloud. And i won't stop. This app shows and plays last liked.
 
-List your favourite playlists at ./src/Config/Soundcloud.js  
+Here the [demo](https://tech.andreystarkov.now.sh/).
+
+## Also
+
+You can list your playlists as array at ./src/Config/Soundcloud.js  
 
 ```js
   const sources = [
@@ -14,9 +18,7 @@ List your favourite playlists at ./src/Config/Soundcloud.js
   ]
 ```
 
-It loads random playlist on every page load. And you can play that. That's it!
-
-Here the [demo](https://build.andreystarkov.now.sh/), that loads last liked tracks by me.
+And it will load random playlist on every page load.
 
 ### Usage
 
