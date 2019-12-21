@@ -1,129 +1,61 @@
-import React, { Component } from 'react'
-import { Image, Box } from 'grommet'
+import React from 'react'
 import { Timer } from 'react-soundplayer/components'
-import styled from 'styled-components'
-import ClassNames from 'classnames'
 
-import { IntersectingCirclesSpinner } from 'react-epic-spinners'
+import { Spinner } from 'Components/UI'
 
-import './Playlist.css'
+import {
+  PlaylistItem,
+  TrackCover,
+  TitleContainer,
+  UserTitle,
+  TrackTitle,
+  TrackTime,
+  PlaylistContainer
+} from './PlaylistStyles'
 
-export const PlaylistContainer = styled.div`
-  display: flex;
-  width: 100%;
-  flex-wrap: wrap;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: flex-start;
-`
-
-export const SpinnerContainer = styled.div`
-  min-height: 70vh;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-`
-
-export const PlaylistItem = styled.div`
-  display: flex;
-  position: relative;
-  width: 50%;
-  flex-direction: row;
-  align-items: center;
-  justify-content: flex-start;
-  @media screen and (max-width:480px) {
-    width: 100%;
-  }
-`
-
-export const TrackCover = styled(Image)`
-  width: 100px;
-  height: 100px;
-  flex: inherit;
-  border-radius: 15rem;
-  margin-right: 2rem;
-`
-
-export const TrackTitle = styled.span`
-  font-size: 1.1rem;
-  font-weight: 300;
-`
-
-export const UserTitle = styled.span`
-  font-size: 1.1rem;
-`
-
-export const TitleContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-`
-
-export const TrackTime = styled.div`
-  position: absolute;
-  right: 2rem;
-  top: 2rem;
-  font-size: 0.9rem;
-  font-weight: 200;
-`
-export default class Playlist extends Component {
-  renderItems = (track, i) => {
-    const { onChoose, soundCloudAudio } = this.props
+function Playlist ({ onChoose, soundCloudAudio, playlist, searchString }) {
+  const renderItem = (track, i) => {
     const { currentTime } = soundCloudAudio.audio
-
-    const isActive = (soundCloudAudio._playlistIndex === i && soundCloudAudio.playing)
-    const classNames = ClassNames('playlist-item p2 border-box', {
-      'is-active': isActive
-    })
-
-    console.log({ ...track })
+    const isActive = !!(soundCloudAudio._playlistIndex === i && soundCloudAudio.playing)
     return (
       <PlaylistItem
         key={track.id}
-        className={classNames}
+        isActive={isActive}
         onClick={() => onChoose(i, isActive)}>
-        <TrackCover
-          fit='cover'
-          src={track.artwork_url} />
+        <TrackCover fit='cover' src={track.artwork_url} />
         <TitleContainer>
           <UserTitle>{track.user.username}</UserTitle>
           <TrackTitle>{track.title}</TrackTitle>
         </TitleContainer>
         <TrackTime>
           {isActive && currentTime > 0
-            ? Timer.prettyTime((track.duration / 1000) - currentTime)
+            ? Timer.prettyTime(track.duration / 1000 - currentTime)
             : Timer.prettyTime(track.duration / 1000)}
         </TrackTime>
       </PlaylistItem>
     )
   }
 
-  filterList = () => {
-    const { playlist, searchString } = this.props
+  const searchFilter = () => {
     let tracks = playlist.tracks
     if (searchString) {
-      tracks = tracks.filter(f =>
-        f.title.toLowerCase().includes(searchString.toLowerCase()) ||
-        f.description.toLowerCase().includes(searchString.toLowerCase()
-      ))
+      tracks = tracks.filter(
+        f =>
+          f.title.toLowerCase().includes(searchString.toLowerCase()) ||
+          f.description.toLowerCase().includes(searchString.toLowerCase())
+      )
     }
     return tracks
   }
 
-  render () {
-    const { playlist } = this.props
-
-    if (!playlist) {
-      return <SpinnerContainer>
-        <IntersectingCirclesSpinner size={600} color={'#111'} />
-      </SpinnerContainer>
-    }
-
-    const list = this.filterList()
-    const tracks = list.map(this.renderItems)
-
-    return (
-      <PlaylistContainer>{tracks}</PlaylistContainer>
-    )
+  if (!playlist) {
+    return <Spinner />
   }
+
+  const list = searchFilter()
+  const tracks = list.map(renderItem)
+
+  return <PlaylistContainer>{tracks}</PlaylistContainer>
 }
+
+export default Playlist

@@ -137,7 +137,6 @@ class PlaylistSoundPlayer extends Component {
 
   renderHeader = () => {
     const { playlist } = this.props
-    console.log({ ...this.props })
     return (
       <div className='flex items-center' style={{ height: '7rem' }} >
         {playlist && playlist.artwork_url
