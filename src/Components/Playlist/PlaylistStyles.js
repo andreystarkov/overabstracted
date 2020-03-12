@@ -43,10 +43,11 @@ export const PlaylistItem = styled.div`
 `
 
 export const TrackCover = styled.img`
-  width: ${rem('100px')};
-  height: ${rem('100px')};
+  width: ${rem('90px')};
+  height: ${rem('90px')};
   flex: inherit;
-  border-radius: ${rem('50px')};
+  border-radius: ${rem('80px')};
+  display:block;
 `
 
 export const TrackTitle = styled.span`
@@ -55,7 +56,9 @@ export const TrackTitle = styled.span`
 `
 
 export const UserTitle = styled.span`
-  font-size: ${rem('12px')};
+  font-size: ${rem('14px')};
+  word-wrap: break-word;
+  max-width: ${rem('360px')};
 `
 
 export const TitleContainer = styled.div`

@@ -36,7 +36,8 @@ class PlaylistSoundPlayer extends Component {
 
     this.state = {
       activeIndex: 0,
-      searchString: ''
+      searchString: '',
+      hoverPercent: null
     }
   }
 
@@ -99,13 +100,34 @@ class PlaylistSoundPlayer extends Component {
   }
 
   renderProgress = () => {
+    const { hoverPercent } = this.state
     const { currentTime, duration } = this.props
+    const progressPercent = (currentTime / duration) * 100 || 0
+    const percent = hoverPercent || progressPercent
+    const onMouseEnter = () => {
+      const el = document.getElementById('ProgressContainer')
+      el.addEventListener('mousemove', e => {
+        const x = e.offsetX
+        const width = el.offsetWidth
+        const hoverPercent = (x / width) * 100
+        this.setState({ hoverPercent })
+      })
+    }
+    const onMouseLeave = () => {
+      const el = document.getElementById('ProgressContainer')
+      el.removeEventListener('mousemove', () => {})
+      this.setState({ hoverPercent: null })
+    }
     return (
-      <ProgressContainer>
+      <ProgressContainer id='ProgressContainer'
+        onMouseLeave={onMouseLeave}
+        onMouseEnter={onMouseEnter}>
         <Progress
+          style={!!hoverPercent ? { transition: 'none' } : {}}
           className='mt1 mb1 rounded'
           innerClassName='rounded-left'
-          value={(currentTime / duration) * 100 || 0}
+          value={percent}
+          hover={!!hoverPercent}
           {...this.props} />
       </ProgressContainer>
     )
@@ -159,6 +181,17 @@ class PlaylistSoundPlayer extends Component {
     return (
       <div className='soundplayer'>
         {this.renderHeader()}
+        <div style={{ paddingLeft: '30px'}}>
+        <h1>Welcome to <a href="https://teleg.run/overabstracted">Overabstracted</a></h1>
+        <h3><a href="https://teleg.run/overabstracted">Best romanian scene telegram channel</a> ever.</h3>
+        <h4 style={{ marginTop: '2rem' }}>Motivate us</h4>
+        <ul>
+          <li>BTC: <b>3CjcZTA95PD5WpBjJS6w7jMh6zr36qPLja</b></li>
+          <li>VISA: <b>4274320047013654</b></li>
+          <li>PAYPAL: <b><a href="https://paypal.me/starcow">paypal.me/starcow</a></b></li>
+        </ul>
+        <h4>Hand picked podcasts</h4>
+        </div>
         <PlaybackControlsContainer>
           {this.renderPlaybackControls()}
           {this.renderProgress()}

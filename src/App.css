@@ -16,6 +16,8 @@ body * {
   font-family: 'Roboto', sans-serif;
 }
 
+a { color: #C06C84; }
+
 :root {
   --font-family: 'Noto Sans HK', 'Helvetica Neue', Helvetica, Arial, sans-serif;
   --container-width: 820px;
