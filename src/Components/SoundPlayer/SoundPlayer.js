@@ -184,12 +184,12 @@ class PlaylistSoundPlayer extends Component {
         <div style={{ paddingLeft: '30px'}}>
         <h1>Welcome to <a href="https://teleg.run/overabstracted">Overabstracted</a></h1>
         <h3><a href="https://teleg.run/overabstracted">Best romanian scene telegram channel</a> ever.</h3>
-        <h4 style={{ marginTop: '2rem' }}>Motivate us</h4>
+        {/* <h4 style={{ marginTop: '2rem' }}>Motivate us</h4>
         <ul>
           <li>BTC: <b>3CjcZTA95PD5WpBjJS6w7jMh6zr36qPLja</b></li>
           <li>VISA: <b>4274320047013654</b></li>
           <li>PAYPAL: <b><a href="https://paypal.me/starcow">paypal.me/starcow</a></b></li>
-        </ul>
+        </ul> */}
         <h4>Hand picked podcasts</h4>
         </div>
         <PlaybackControlsContainer>
