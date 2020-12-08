@@ -181,17 +181,6 @@ class PlaylistSoundPlayer extends Component {
     return (
       <div className='soundplayer'>
         {this.renderHeader()}
-        <div style={{ paddingLeft: '30px'}}>
-        <h1>Welcome to <a href="https://teleg.run/overabstracted">Overabstracted</a></h1>
-        <h3><a href="https://teleg.run/overabstracted">Best romanian scene telegram channel</a> ever.</h3>
-        {/* <h4 style={{ marginTop: '2rem' }}>Motivate us</h4>
-        <ul>
-          <li>BTC: <b>3CjcZTA95PD5WpBjJS6w7jMh6zr36qPLja</b></li>
-          <li>VISA: <b>4274320047013654</b></li>
-          <li>PAYPAL: <b><a href="https://paypal.me/starcow">paypal.me/starcow</a></b></li>
-        </ul> */}
-        <h4>Hand picked podcasts</h4>
-        </div>
         <PlaybackControlsContainer>
           {this.renderPlaybackControls()}
           {this.renderProgress()}
@@ -202,6 +191,14 @@ class PlaylistSoundPlayer extends Component {
           searchString={searchString}
           onChoose={(index, isActive) => this.playTrackAtIndex(index, isActive)}
           {...this.props} />
+        <div style={{ paddingTop: '40px', paddingLeft: '30px'}}>
+          <h1>Welcome to <a href="https://soundcloud.com/starcowsky" target="_blank">Abstracted</a> soundcloud hightlights.</h1>
+          <h3><a href="https://t.me/overabstracted" target="_blank">Telegram channel</a> with <b>loseless</b> podcasts. Only near-romanian scene.</h3>
+          <h4><a href="https://t.me/touchableopacity" target="_blank">PM me in telegram</a> for any reason.</h4>
+          <h5><a href="https://github.com/andreystarkov/overabstracted" target="_blank">Github repo</a> waiting for your PR.</h5>
+
+        </div>
+
       </div>
     )
   }
